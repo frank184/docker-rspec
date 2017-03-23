@@ -9,7 +9,7 @@ opt_parser = OptionParser.new do |opt|
   opt.separator ""
   opt.separator  "Options"
 
-  opt.on("-d","--docker OPTIONS", Array,"options to pass to docker-compose") do |opt|
+  opt.on("-d","--docker OPTION", "--docker='OPTION1 OPTION2'", String, "options to pass to docker-compose") do |opt|
     options[:docker] = opt
   end
 
@@ -17,12 +17,13 @@ opt_parser = OptionParser.new do |opt|
     options[:container] = opt
   end
 
-  opt.on("-r","--rspec OPTIONS", Array,"options to pass to rspec") do |opt|
-    options[:daemon] = opt
+  opt.on("-r","--rspec OPTION", "--rspec='OPTION1 OPTION2'", String, "options to pass to rspec") do |opt|
+    options[:rspec] = opt
   end
 
   opt.on("-h","--help","help") do
     puts opt_parser
+    exit(0)
   end
 end
 

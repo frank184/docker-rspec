@@ -4,6 +4,7 @@ module Docker
   module RSpec
     class Run
       def initialize(options = {})!
+        puts options
         @container = options[:container] || 'rspec'
         @docker_options = options[:docker]
         @rspec_options = options[:rspec]
@@ -15,7 +16,7 @@ module Docker
       end
 
       def run!
-        $stdout.puts system command
+        $stdout.puts `#{command}`
       end
     end
   end
